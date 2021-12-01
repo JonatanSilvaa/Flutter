@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,14 +17,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Gerando frases aleatorias'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
 
   final String title;
 
@@ -31,34 +32,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _numero_aleatorio = 0;
+  List lista_frases = [
+    "O importante não é vencer todos os dias, mas lutar sempre.",
+    "Maior que a tristeza de não haver vencido é a vergonha de não ter lutado!",
+    "É melhor conquistar a si mesmo do que vencer mil batalhas.",
+    "Quem ousou conquistar e saiu pra lutar, chega mais longe!"
+  ];
 
   void _incrementCounter() {
     setState(() {
-     
-      _counter++;
+      _numero_aleatorio = new Random().nextInt(4);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
-        
         title: Text(widget.title),
       ),
       body: Center(
-       
         child: Column(
-         
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Clique no botão de adicionar para atualizar frase',
             ),
             Text(
-              '$_counter',
+              lista_frases[_numero_aleatorio],
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
